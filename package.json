@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Reztrology#4200",
+  "author": "xTurbo21",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^13.1.0",
