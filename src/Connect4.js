@@ -1,6 +1,8 @@
 const { MessageEmbed, MessageButton, MessageActionRow } = require('discord.js');
 const { disableButtons } = require('../utils/utils')
 const verify = require('../utils/verify')
+const EventEmitter = require('events');
+const emitter = new EventEmitter();
  
 const WIDTH = 7;
 const HEIGHT = 6;
@@ -199,7 +201,7 @@ module.exports = class Connect4Game {
 
 
             if (this.hasWon(placedX, placedY)) {
-                this.gameOver({ result: 'winner', name: btn.user.tag, emoji: this.getChip() }, msg);
+                this.gameOver({ result: 'winner', name: btn.user.tag, emoji: this.getChip(), userid: btn.user.id}, msg);
             }
             else if (this.isBoardFull()) {
                 this.gameOver({ result: 'tie' }, msg);
@@ -280,7 +282,11 @@ module.exports = class Connect4Game {
             return this.options.gameEndMessage;
         else if (result.result === 'error')
             return 'ERROR: ' + result.error;
-        else
-            return this.options.winMessage.replace('{emoji}', result.emoji).replace('{winner}', result.name);
+        else {
+            this.options.winMessage.replace('{emoji}', result.emoji).replace('{winner}', result.name);
+            emitter.emit('gameWon', result.userid)
+            return;
+        }
+            
     }
 }
