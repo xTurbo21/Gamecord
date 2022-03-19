@@ -1,13 +1,13 @@
 {
   "name": "@reztro/gamecord",
-  "version": "1 .0.0",
+  "version": "1.0.0",
   "description": "Fork of Aniket's Gamecord for Adda Ghor.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Aniket#0729",
-  "license": "GPL-3.0",
+  "author": "Reztrology#4200",
+  "license": "ISC",
   "dependencies": {
     "discord.js": "^13.1.0",
     "html-entities": "^2.3.2",
